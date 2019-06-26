@@ -1,0 +1,24 @@
+.btn {
+  background-color: $orange;
+  color: $pure-white;
+  padding: $xs-size;
+  margin: $m-size;
+  width: $btnWidth-size;
+  height: $btnHeight-size;
+  border: none;
+  border-radius: $xxs-size;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: $m-size
+}
+
+.btn:hover {
+  background-color: $dark-orange;
+  color: $light-gray;
+}
+.btn:focus {
+  background-color: $dark-orange;
+  color: $light-gray;
+}

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Homepage correctly 1`] = `ShallowWrapper {}`;
+
+exports[`should render Homepage with alt data correctly 1`] = `ShallowWrapper {}`;

@@ -1,0 +1,38 @@
+.notFound {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
+  width: 50%;
+  
+}
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 90%;
+}
+
+.notFoundLogo {
+  width: 23%;
+  align-self: center;
+}
+
+.notFoundTextExtraLarge {
+  font-size: $btnHeight-size;
+  font-weight: 700;
+}
+
+.notFoundTextDark {
+  color: $dark-gray;
+}
+
+.notFoundTextMedium {
+  font-size: $l-size;
+}
+
+.notFoundLink {
+  text-decoration: none;
+  color: $orange;
+}

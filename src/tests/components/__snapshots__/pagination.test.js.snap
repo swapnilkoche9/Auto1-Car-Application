@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Pagination correctly 1`] = `ShallowWrapper {}`;
+
+exports[`should render Pagination with alt data correctly 1`] = `ShallowWrapper {}`;

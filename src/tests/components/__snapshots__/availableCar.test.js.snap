@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AvailableCar correctly 1`] = `ShallowWrapper {}`;
+
+exports[`should render AvailableCar with alt data correctly 1`] = `ShallowWrapper {}`;

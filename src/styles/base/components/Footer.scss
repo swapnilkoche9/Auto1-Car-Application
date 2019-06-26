@@ -1,0 +1,13 @@
+.footer {
+  padding: $s-size 0;
+  width: 100%;
+  text-align: center;
+  border-top: 0.2rem solid $light-gray;
+  height: $xxl-size;
+  
+}
+
+.footerText {
+  margin-top:$btnHeight-size; 
+  font-size: $m-size;
+}

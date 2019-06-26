@@ -1,0 +1,22 @@
+.filtersContainer {
+  height: 235px;
+  width: 21%;
+  border: .2rem solid $light-gray;
+  padding: $xl-size;
+  margin: $xl-size;
+}
+
+.filtersContainerContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+   text-align: start;
+}
+.filterDropdown{
+margin-bottom: $l-size;
+}
+.filterBtnContainer {
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+}

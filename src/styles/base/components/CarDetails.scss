@@ -1,0 +1,58 @@
+
+.carImageAndDescriptionContainer{
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+}
+.carHeaderImage{
+  height: 310px;
+  margin-top: $xl-size;
+}
+.carView {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: $content-size;
+  width: $content-size;
+  margin:0 auto;
+}
+.carDetails {
+  display: flex;
+  flex-direction: column;
+ margin-right: $xl-size;
+}
+.modalName{
+  font-size: $btnHeight-size;
+  font-weight: 700;
+  margin-top: $s-size;
+  color: $dark-gray
+}
+.carDescriptionContainer{
+  text-align: left;
+  margin-bottom: $xl-size;;
+}
+.carDescription{
+  font-size: $l-size;;
+  color: $dark-gray
+}
+.carAvailabilityText{
+  font-size: $m-size;;
+  color: $dark-gray
+}
+.saveAndRemoveCarContainer{
+  margin-left: $xl-size;;
+  padding: $xl-size;;
+  border: 2px solid $light-gray;
+  height: 98px;
+  width: 94%;
+  margin-top: $s-size;;
+}
+.saveCarText{
+ text-align: left;
+ font-size: $m-size;;
+ color: $dark-gray
+}
+.saveAndRemoveButton{
+text-align: right
+}
+

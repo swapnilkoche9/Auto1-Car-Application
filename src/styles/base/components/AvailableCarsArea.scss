@@ -1,0 +1,89 @@
+
+.availableCarsContainer {
+  width: 75%;
+  padding: $xs-size;
+  margin-right: $xl-size
+}
+.availableTextAndSortContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.availableTextAndResultContainer{
+  text-align: left;
+}
+.sortDropDownContainer{
+  margin-top: $l-size;
+  width: 300px;
+}
+
+.availableCar {
+  width: 100%;
+  border: 0.2rem solid $light-gray;
+  margin-top: $m-size;
+  height: 13rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start
+}
+
+.carImageContainer {
+  margin: $m-size;
+  width: 15%; 
+}
+.carImage{
+  height: 90px;
+  padding: $xs-size;
+}
+
+.carDetailsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: $m-size;
+  width: 85%;
+}
+
+.availableCarDetails {
+  display: flex;
+  flex-direction: column;
+  margin: $m-size;
+  width: 100%;
+}
+
+.availableText {
+  font-size: $l-size;
+  font-weight: 700;
+  color: $dark-gray
+}
+
+.resultText {
+  font-size: $l-size;
+  color: $dark-gray;
+}
+.availableCarstext {
+  text-align: start;
+  margin: 0;
+  color: $dark-gray;
+}
+
+.availableCarsTextBold{
+  font-size: $l-size;
+  font-weight: 700;
+}
+
+.availableCarsTextSmall{
+  font-size: $m-size;
+}
+.viewDetailsLinkContainer{
+  text-align: left;
+}
+.linkTextOange{
+  color: $orange;
+  text-decoration: none;
+}
+.linkTextOange:hover{
+  color: $dark-orange;
+  text-decoration: underline;
+  
+}

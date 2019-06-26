@@ -1,0 +1,15 @@
+.dropDownContainer{
+  display: flex;
+  flex-direction: column;
+}
+.dropDownLabel{
+  margin-bottom: $s-size;
+  text-align: left;
+  font-size: $m-size;
+  color: $dark-gray
+}
+.dropDown{
+ font-size: $m-size;
+}
+
+

@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 0.2rem solid $light-gray;
+  margin-bottom: $s-size;
+  padding: $s-size 0;
+  height: $xxl-size;
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: $xl-size;
+}
+
+.headerLeft {
+  display: flex;
+  margin-left: $xl-size;
+  position: absolute;
+  width: 210px;
+  height: 45px;
+}
+
+.headerLink {
+  font-size: $l-size;
+  padding: $xl-size;
+  text-decoration: none;
+  color: $dark-gray;
+}
+.headerLogo {
+  width: 100%;
+  height: auto;
+}
+
