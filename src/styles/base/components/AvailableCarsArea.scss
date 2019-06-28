@@ -87,3 +87,22 @@
   text-decoration: underline;
   
 }
+
+
+@media only screen and (max-width: 600px) {
+  .availableTextAndSortContainer{
+    flex-direction: column;
+    margin-left: 30px;
+
+  }
+  .availableCar{
+    width: max-content;
+    flex-direction: column;
+    height: 25rem;
+    margin-left: 30px;
+  }
+  .carImageContainer{
+    width: unset;
+    margin: unset;
+  }
+}

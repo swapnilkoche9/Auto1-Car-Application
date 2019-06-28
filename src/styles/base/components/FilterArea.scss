@@ -20,3 +20,9 @@ margin-bottom: $l-size;
   display: flex;
   flex-direction: row;
 }
+
+@media only screen and (max-width: 600px) {
+  .filtersContainer{
+    width: auto;
+  }
+}
