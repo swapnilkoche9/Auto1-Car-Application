@@ -8,20 +8,20 @@ import { getColorsApi } from '../utils/colors'
 import { handleError } from '../utils/fetch'
 import { Dispatch } from 'react';
 
-export function getColorsRequest () {
+export function getColorsRequest() {
   return {
     type: FETCH_ALL_COLORS_REQUESTED
   }
 }
 
-export function getColorsSuccess (data:any) {
+export function getColorsSuccess(data: any) {
   return {
     type: FETCH_ALL_COLORS_SUCCEEDED,
     payload: data
   }
 }
 
-export function getColorsFailure (error:string) {
+export function getColorsFailure(error: string) {
   return {
     type: FETCH_ALL_COLORS_FAILED,
     payload: {
@@ -30,8 +30,8 @@ export function getColorsFailure (error:string) {
   }
 }
 
-export function getAllColors () {
-  return (dispatch:Dispatch<any>) => {
+export function getAllColors() {
+  return (dispatch: Dispatch<any>) => {
     dispatch(getColorsRequest())
 
     return getColorsApi()

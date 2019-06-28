@@ -1,13 +1,15 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Button from '../components/Button'
 import * as carsActions from '../actions/cars'
 import constants from '../constants/SystemConstants'
-import {CarDetailsProps,Car} from '../utils/interface'
+import { CarDetailsProps, Car } from '../utils/interface'
+import { Suspense, lazy } from 'react';
+
+const Button = lazy(() => import('../components/Button'));
 
 class CarDetails extends React.Component<CarDetailsProps, {}> {
-  
+
   componentDidMount() {
     const {
       match
@@ -16,22 +18,19 @@ class CarDetails extends React.Component<CarDetailsProps, {}> {
   }
 
   // add particular car to favorites list
-  addFavoriteCar(car:Car) {
-    debugger
+  addFavoriteCar(car: Car) {
     this.props.carsActions.addFavoriteCar(car)
   }
 
   // remove particular car to favorites list
-  removeCarFromFav(car:Car) {
-    debugger
+  removeCarFromFav(car: Car) {
     this.props.carsActions.removeFavoriteCar(car)
   }
 
   //  Confirm if this car is already added
-  existsInFavCars(car:Car, favoriteCars:Car[]) {
-    debugger
+  existsInFavCars(car: Car, favoriteCars: Car[]) {
     let exists = false
-    favoriteCars.forEach((favCar:Car) => {
+    favoriteCars.forEach((favCar: Car) => {
       if (favCar.stockNumber === car.stockNumber) {
         exists = true
       }
@@ -51,7 +50,7 @@ class CarDetails extends React.Component<CarDetailsProps, {}> {
       <Fragment>
         {isFetchingCars === false ? <div className="carImageAndDescriptionContainer">
           <div className="carHeaderImage">
-            <img src={car.pictureUrl} alt='car'/>
+            <img src={car.pictureUrl} alt='car' />
           </div>
           <div className='carView'>
             <div className='carDetails'>
@@ -76,26 +75,32 @@ class CarDetails extends React.Component<CarDetailsProps, {}> {
               <div className='saveAndRemoveButton'>
                 {
                   this.existsInFavCars(car, favoriteCars)
-                    ? <Button text={constants.REMOVE_TEXT} handleClick={this.removeCarFromFav.bind(this, car)} />
-                    : <Button text={constants.SAVE_TEXT} handleClick={this.addFavoriteCar.bind(this, car)} />
+                    ?
+                    <Suspense fallback={<div />}>
+                      <Button text={constants.REMOVE_TEXT} handleClick={this.removeCarFromFav.bind(this, car)} />
+                    </Suspense>
+                    :
+                    <Suspense fallback={<div />}>
+                      <Button text={constants.SAVE_TEXT} handleClick={this.addFavoriteCar.bind(this, car)} />
+                    </Suspense>
                 }
 
               </div>
             </div>
           </div>
-        </div> : <div><h1>Loading</h1></div>}
+        </div> : <div />}
       </Fragment>
     )
   }
 }
 
-const mapStateToProps = (state:CarDetailsProps) => {
+const mapStateToProps = (state: CarDetailsProps) => {
   return {
     cars: state.cars
   }
 }
 
-const mapDispatchToProps = (dispatch:any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     carsActions: bindActionCreators(carsActions, dispatch)
   }

@@ -8,20 +8,20 @@ import { getManufacturersApi } from '../utils/manufacturers'
 import { handleError } from '../utils/fetch'
 import { Dispatch } from 'react';
 
-export function getManufacturersRequest () {
+export function getManufacturersRequest() {
   return {
     type: FETCH_ALL_MANUFACTURERS_REQUESTED
   }
 }
 
-export function getManufacturersSuccess (data:any) {
+export function getManufacturersSuccess(data: any) {
   return {
     type: FETCH_ALL_MANUFACTURERS_SUCCEEDED,
     payload: data
   }
 }
 
-export function getManufacturersFailure (error:string) {
+export function getManufacturersFailure(error: string) {
   return {
     type: FETCH_ALL_MANUFACTURERS_FAILED,
     payload: {
@@ -30,8 +30,8 @@ export function getManufacturersFailure (error:string) {
   }
 }
 
-export function getAllManufacturers () {
-  return (dispatch:Dispatch<any>) => {
+export function getAllManufacturers() {
+  return (dispatch: Dispatch<any>) => {
     dispatch(getManufacturersRequest())
 
     return getManufacturersApi()

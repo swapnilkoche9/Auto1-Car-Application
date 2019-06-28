@@ -3,14 +3,14 @@ import {
   FETCH_ALL_COLORS_SUCCEEDED,
   FETCH_ALL_COLORS_FAILED
 } from '../constants'
-import {GenericAction} from '../utils/interface'
+import { GenericAction } from '../utils/interface'
 const initialState = {
   isFetchingColors: false,
   colors: [],
   fetchingColorsError: null
 }
 
-function colors (state = initialState, action:GenericAction) {
+function colors(state = initialState, action: GenericAction) {
   switch (action.type) {
     case FETCH_ALL_COLORS_REQUESTED:
       return Object.assign({}, state, {

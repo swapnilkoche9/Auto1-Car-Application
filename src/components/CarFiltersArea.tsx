@@ -1,11 +1,12 @@
 import React from 'react'
-import Dropdown from './Dropdown'
-import Button from './Button'
 import constants from '../constants/SystemConstants'
-import {CarFiltersAreaProps} from '../utils/interface'
+import { CarFiltersAreaProps } from '../utils/interface'
+import { Suspense, lazy } from 'react';
 
+const Dropdown = lazy(() => import('./Dropdown'));
+const Button = lazy(() => import('../components/Button'));
 
-const CarFiltersArea = (props:CarFiltersAreaProps) => {
+const CarFiltersArea = (props: CarFiltersAreaProps) => {
   const {
     colors,
     manufacturers,
@@ -18,23 +19,29 @@ const CarFiltersArea = (props:CarFiltersAreaProps) => {
     <div className='filtersContainer'>
       <div className='filtersContainerContent'>
         <div className='filterDropdown'>
-          <Dropdown
-            dropdownContent={colors}
-            defaultDropdownValue={constants.ALL_CAR_COLORS_DROPDOWN}
-            getFilterParams={getColorsFilterParams}
-            dropDownLabel={constants.COLOR}
-          />
+          <Suspense fallback={<div />}>
+            <Dropdown
+              dropdownContent={colors}
+              defaultDropdownValue={constants.ALL_CAR_COLORS_DROPDOWN}
+              getFilterParams={getColorsFilterParams}
+              dropDownLabel={constants.COLOR}
+            />
+          </Suspense>
         </div>
         <div className='filterDropdown'>
-          <Dropdown
-            dropdownContent={manufacturers}
-            defaultDropdownValue={constants.ALL_MANUFACTURERS_DROPDOWN}
-            getFilterParams={getManufacturersFilterParams}
-            dropDownLabel={constants.MANUFACTURERS}
-          />
+          <Suspense fallback={<div />}>
+            <Dropdown
+              dropdownContent={manufacturers}
+              defaultDropdownValue={constants.ALL_MANUFACTURERS_DROPDOWN}
+              getFilterParams={getManufacturersFilterParams}
+              dropDownLabel={constants.MANUFACTURERS}
+            />
+          </Suspense>
         </div>
         <div className='filterBtnContainer'>
-          <Button handleClick={getFilteredCarList} text={constants.BUTTON_TEXT} />
+          <Suspense fallback={<div />}>
+            <Button handleClick={getFilteredCarList} text={constants.BUTTON_TEXT} />
+          </Suspense>
         </div>
       </div>
     </div>

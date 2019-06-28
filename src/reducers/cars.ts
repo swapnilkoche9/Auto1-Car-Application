@@ -13,12 +13,12 @@ import {
   REMOVE_CAR_FROM_FAVORITES_COLLECTION_SUCCEEDED,
   PAGE_NUMBER_CHANGED
 } from '../constants'
-import {GenericAction} from '../utils/interface'
+import { GenericAction } from '../utils/interface'
 const initialState = {
   isFetchingCars: false,
   cars: [],
   currentPage: 1,
-  favoriteCars: localStorage.getItem('cars')  ? JSON.parse(localStorage.getItem('cars') || '{}') : [],
+  favoriteCars: localStorage.getItem('cars') ? JSON.parse(localStorage.getItem('cars') || '{}') : [],
   totalPageCount: undefined,
   fetchingCarsError: undefined,
   isFetchingSingleCar: false,
@@ -33,8 +33,8 @@ const initialState = {
 }
 
 
-function cars (state = initialState, action:GenericAction) {
-  
+function cars(state = initialState, action: GenericAction) {
+
   switch (action.type) {
     case FETCH_ALL_CARS_REQUESTED:
       return Object.assign({}, state, {

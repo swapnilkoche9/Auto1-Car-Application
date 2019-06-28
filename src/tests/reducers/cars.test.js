@@ -17,7 +17,7 @@ test('should setup default cars values', () => {
     addingCarError: undefined,
     isRemovingCars: false,
     removingCarError: undefined,
-    totalCarCount:0
+    totalCarCount: 0
   })
 })
 

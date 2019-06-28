@@ -1,24 +1,25 @@
 import React from 'react'
 import Select from 'react-select';
 import constants from '../constants/SystemConstants'
-import {DropDownProps} from '../utils/interface'
+import { DropDownProps } from '../utils/interface'
+
 const dropDownStyles = {
-  option: (styles:any, {isFocused}:any) => {
+  option: (styles: any, { isFocused }: any) => {
     return {
-       ...styles,
+      ...styles,
       backgroundColor: isFocused ? constants.ORANGE_COLOR : constants.WHITE_COLOR,
       color: isFocused ? constants.WHITE_COLOR : constants.DARK_GRAY_COLOR,
     };
   },
-  placeholder:(styles:any)=>{
-    return{
+  placeholder: (styles: any) => {
+    return {
       ...styles,
-       color: constants.DARK_GRAY_COLOR,
+      color: constants.DARK_GRAY_COLOR,
     }
   }
-  
+
 };
-const Dropdown = (props:DropDownProps) => {
+const Dropdown = (props: DropDownProps) => {
   const {
     dropdownContent,
     defaultDropdownValue,
@@ -29,11 +30,10 @@ const Dropdown = (props:DropDownProps) => {
     <div className="dropDownContainer">
       <label className="dropDownLabel">{dropDownLabel}</label>
       <div className="dropDown">
-         <Select styles={dropDownStyles} options={dropdownContent.map((option:any) => ({ label: option, value: option }))} isSearchable={true} onChange={getFilterParams} placeholder={defaultDropdownValue} />
+        <Select styles={dropDownStyles} options={dropdownContent.map((option: any) => ({ label: option, value: option }))} isSearchable={true} onChange={getFilterParams} placeholder={defaultDropdownValue} />
       </div>
-      </div>
+    </div>
   )
-  }
-  
+}
 
 export default Dropdown

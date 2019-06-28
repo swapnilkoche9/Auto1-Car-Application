@@ -1,15 +1,14 @@
-import {Car} from '../utils/interface'
+import { Car } from '../utils/interface'
 import constants from '../constants/SystemConstants'
-  // car object  added to localStorage
+// car object  added to localStorage
 
-export const addFavoriteCarAsync = (car:Car) => {
-  debugger
+export const addFavoriteCarAsync = (car: Car) => {
   return new Promise((resolve, reject) => {
     const cars = localStorage.getItem('cars')
     process.nextTick(() => {
       if (cars) {
         let exists = false
-        JSON.parse(cars).forEach((element:Car) => {
+        JSON.parse(cars).forEach((element: Car) => {
           if (element.stockNumber === car.stockNumber) {
             exists = true
           }
@@ -31,13 +30,13 @@ export const addFavoriteCarAsync = (car:Car) => {
 
 //  car object removed from localStorage
 
-export const removeFromFavoriteCarAsync = (car:Car) => {
+export const removeFromFavoriteCarAsync = (car: Car) => {
   return new Promise((resolve, reject) => {
     const cars = localStorage.getItem('cars')
     process.nextTick(() => {
       if (cars && cars.length > 0) {
         const parsedLocalStorageData = JSON.parse(cars)
-        const modifiedCars = parsedLocalStorageData.filter((data:Car, index:number, arr:Array<Car>) => {
+        const modifiedCars = parsedLocalStorageData.filter((data: Car, index: number, arr: Array<Car>) => {
           return data.stockNumber !== car.stockNumber
         })
         localStorage.removeItem('cars')

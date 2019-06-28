@@ -1,14 +1,15 @@
 import React from 'react'
-import AvailableCar from './AvailableCar'
-import Pagination from './Pagination'
-import Dropdown from './Dropdown'
 import constants from '../constants/SystemConstants'
-import {AvailableCarsAreaProps,Car,Cars} from '../utils/interface'
+import { AvailableCarsAreaProps, Car, Cars } from '../utils/interface'
+import { Suspense, lazy } from 'react';
 
+const AvailableCar = lazy(() => import('./AvailableCar'));
+const Pagination = lazy(() => import('./Pagination'));
+const Dropdown = lazy(() => import('./Dropdown'));
 
 const sortDropDownContent = [constants.NONE_SORT_ORDER, constants.ASC_SORT_ORDER, constants.DES_SORT_ORDER]
-let renderAvailableCars = (cars:Cars) => {
-  return cars && cars.map((car:Car, index:number) => {
+let renderAvailableCars = (cars: Cars) => {
+  return cars && cars.map((car: Car, index: number) => {
     const {
       stockNumber,
       mileage,
@@ -18,20 +19,22 @@ let renderAvailableCars = (cars:Cars) => {
       pictureUrl
     } = car
     return (
-      <AvailableCar
-        key={index}
-        stockNumber={stockNumber}
-        mileage={mileage}
-        fuelType={fuelType}
-        color={color}
-        modelName={modelName}
-        pictureUrl={pictureUrl}
-      />
+      <Suspense fallback={<div />} key={index}>
+        <AvailableCar
+          key={index}
+          stockNumber={stockNumber}
+          mileage={mileage}
+          fuelType={fuelType}
+          color={color}
+          modelName={modelName}
+          pictureUrl={pictureUrl}
+        />
+      </Suspense>
     )
   })
 }
 
-const AvailableCarsArea = (props:AvailableCarsAreaProps) => {
+const AvailableCarsArea = (props: AvailableCarsAreaProps) => {
   const {
     cars,
     totalPageCount,
@@ -54,21 +57,25 @@ const AvailableCarsArea = (props:AvailableCarsAreaProps) => {
           </div>
         </div>
         <div className="sortDropDownContainer">
-          <Dropdown
-            dropdownContent={sortDropDownContent}
-            defaultDropdownValue={constants.NONE_SORT_ORDER}
-            getFilterParams={getSortFilterParams}
-            dropDownLabel={constants.SORT_BY_TEXT}
-          />
+          <Suspense fallback={<div />}>
+            <Dropdown
+              dropdownContent={sortDropDownContent}
+              defaultDropdownValue={constants.NONE_SORT_ORDER}
+              getFilterParams={getSortFilterParams}
+              dropDownLabel={constants.SORT_BY_TEXT}
+            />
+          </Suspense>
         </div>
       </div>
       {renderAvailableCars(cars)}
-      <Pagination
-        getPageParams={getPageParams}
-        totalPageCount={totalPageCount}
-        currentPage={currentPage}
-        changePageNumber={changePageNumber}
-      />
+      <Suspense fallback={<div />}>
+        <Pagination
+          getPageParams={getPageParams}
+          totalPageCount={totalPageCount}
+          currentPage={currentPage}
+          changePageNumber={changePageNumber}
+        />
+      </Suspense>
     </div>
   )
 }

@@ -18,28 +18,28 @@ import { getCarsApi, getSingleCarApi } from '../utils/cars'
 import { handleError } from '../utils/fetch'
 import { addFavoriteCarAsync, removeFromFavoriteCarAsync } from '../helpers'
 import { Dispatch } from 'react';
-import {Car} from '../utils/interface'
+import { Car } from '../utils/interface'
 
-export function changePageNumber (currentPage:number) {
+export function changePageNumber(currentPage: number) {
   return {
     type: PAGE_NUMBER_CHANGED,
     payload: currentPage
   }
 }
-export function getCarsRequest () {
+export function getCarsRequest() {
   return {
     type: FETCH_ALL_CARS_REQUESTED
   }
 }
 
-export function getCarsSuccess (data:any) {
+export function getCarsSuccess(data: any) {
   return {
     type: FETCH_ALL_CARS_SUCCEEDED,
     payload: data
   }
 }
 
-export function getCarsFailure (error:string) {
+export function getCarsFailure(error: string) {
   return {
     type: FETCH_ALL_CARS_FAILED,
     payload: {
@@ -49,10 +49,8 @@ export function getCarsFailure (error:string) {
 }
 
 
-export function getAllCars (params:any) {
+export function getAllCars(params: any) {
   return (dispatch: Dispatch<any>) => {
-   // dispatch(getCarsRequest())
-
     return getCarsApi(params)
       .then((response) => {
         dispatch(getCarsSuccess(response))
@@ -65,20 +63,20 @@ export function getAllCars (params:any) {
   }
 }
 
-export function getSingleCarRequest () {
+export function getSingleCarRequest() {
   return {
     type: FETCH_SINGLE_CAR_REQUESTED
   }
 }
 
-export function getSingleCarSuccess (data:any) {
+export function getSingleCarSuccess(data: any) {
   return {
     type: FETCH_SINGLE_CAR_SUCCEEDED,
     payload: data
   }
 }
 
-export function getSingleCarFailure (error:string) {
+export function getSingleCarFailure(error: string) {
   return {
     type: FETCH_SINGLE_CAR_FAILED,
     payload: {
@@ -87,10 +85,8 @@ export function getSingleCarFailure (error:string) {
   }
 }
 
-export function getSingleCar (stockNumber:number) {
+export function getSingleCar(stockNumber: number) {
   return (dispatch: Dispatch<any>) => {
-   // dispatch(getSingleCarRequest())
-
     return getSingleCarApi(stockNumber)
       .then((response) => {
         dispatch(getSingleCarSuccess(response))
@@ -102,30 +98,28 @@ export function getSingleCar (stockNumber:number) {
       })
   }
 }
-export function addFavoriteCarRequest () {
+export function addFavoriteCarRequest() {
   return {
     type: ADD_CAR_TO_FAVORITES_COLLECTION_REQUESTED
   }
 }
 
-export function addFavoriteCarSuccess (data:any) {
+export function addFavoriteCarSuccess(data: any) {
   return {
     type: ADD_CAR_TO_FAVORITES_COLLECTION_SUCCEEDED,
     payload: data
   }
 }
 
-export function addFavoriteCarFailure (error:string) {
+export function addFavoriteCarFailure(error: string) {
   return {
     type: ADD_CAR_TO_FAVORITES_COLLECTION_FAILED,
     payload: error
   }
 }
 
-export function addFavoriteCar (car:Car) {
-  return (dispatch:Dispatch<any>) => {
-   // dispatch(addFavoriteCarRequest())
-
+export function addFavoriteCar(car: Car) {
+  return (dispatch: Dispatch<any>) => {
     return addFavoriteCarAsync(car)
       .then((response) => {
         dispatch(addFavoriteCarSuccess(response))
@@ -138,20 +132,20 @@ export function addFavoriteCar (car:Car) {
   }
 }
 
-export function removeFavoriteCarRequest () {
+export function removeFavoriteCarRequest() {
   return {
     type: REMOVE_CAR_FROM_FAVORITES_COLLECTION_REQUESTED
   }
 }
 
-export function removeFavoriteCarSuccess (data:any) {
+export function removeFavoriteCarSuccess(data: any) {
   return {
     type: REMOVE_CAR_FROM_FAVORITES_COLLECTION_SUCCEEDED,
     payload: data
   }
 }
 
-export function removeFavoriteCarFailure (error:string) {
+export function removeFavoriteCarFailure(error: string) {
   return {
     type: REMOVE_CAR_FROM_FAVORITES_COLLECTION_FAILED,
     payload: {
@@ -160,10 +154,8 @@ export function removeFavoriteCarFailure (error:string) {
   }
 }
 
-export function removeFavoriteCar (car:Car) {
-  return (dispatch:Dispatch<any>) => {
-   // dispatch(removeFavoriteCarRequest())
-
+export function removeFavoriteCar(car: Car) {
+  return (dispatch: Dispatch<any>) => {
     return removeFromFavoriteCarAsync(car)
       .then((response) => {
         dispatch(removeFavoriteCarSuccess(response))

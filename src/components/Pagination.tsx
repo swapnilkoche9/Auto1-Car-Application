@@ -1,8 +1,8 @@
 import React from 'react'
 import constants from '../constants/SystemConstants'
-import {PaginationProps} from '../utils/interface'
+import { PaginationProps } from '../utils/interface'
 
-class Pagination extends React.Component<PaginationProps,{}> {
+class Pagination extends React.Component<PaginationProps, {}> {
 
   // go to the first page
   firstPage = () => {
@@ -24,7 +24,7 @@ class Pagination extends React.Component<PaginationProps,{}> {
   }
 
   // go to the last page
-  
+
   lastPage = () => {
     const {
       totalPageCount
@@ -35,7 +35,7 @@ class Pagination extends React.Component<PaginationProps,{}> {
   }
 
   //  go to next page
-   
+
   nextPage = () => {
     const {
       totalPageCount,
@@ -50,7 +50,7 @@ class Pagination extends React.Component<PaginationProps,{}> {
       this.props.getPageParams(currentPage + 1)
     }
   }
-  static defaultProps: { currentPage: number};
+  static defaultProps: { currentPage: number };
 
   render() {
     const {

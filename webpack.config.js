@@ -3,14 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 
   // webpack will take the files from ./src/index
-  entry: './src/index',
+  entry: ['babel-polyfill', './src/index'],
 
   // and output it into /dist as bundle.js
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
-
+  devServer: {
+    historyApiFallback: true,
+  },
   // adding .ts and .tsx to resolve.extensions will help babel look for .ts and .tsx files to transpile
   resolve: {
     extensions: ['.ts', '.tsx', '.js']

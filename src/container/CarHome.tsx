@@ -1,14 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators} from 'redux'
-import CarFiltersArea from '../components/CarFiltersArea'
-import AvailableCarsArea from '../components/AvailableCarsArea'
+import { bindActionCreators } from 'redux'
 import * as carsActions from '../actions/cars'
 import * as colorsActions from '../actions/colors'
 import * as manufacturersActions from '../actions/manufacturers'
 import constants from '../constants/SystemConstants'
 import { CarHomeProps, CarHomeState, FilterObject } from '../utils/interface'
+import { Suspense, lazy } from 'react';
 
+const AvailableCarsArea = lazy(() => import('../components/AvailableCarsArea'));
+const CarFiltersArea = lazy(() => import('../components/CarFiltersArea'));
+const Loading = lazy(() => import('../components/Loading'));
 
 class CarHome extends React.Component<CarHomeProps, CarHomeState>{
   constructor(props: CarHomeProps) {
@@ -26,7 +28,7 @@ class CarHome extends React.Component<CarHomeProps, CarHomeState>{
     this.props.colorsActions.getAllColors()
     this.props.manufacturersActions.getAllManufacturers()
   }
-  componentDidUpdate(prevProps: CarHomeProps, prevState: CarHomeState) {
+  componentDidUpdate({ }, prevState: CarHomeState) {
     if (prevState.selectedPage !== this.state.selectedPage) {
       this.getFilteredCarList()
     }
@@ -106,25 +108,33 @@ class CarHome extends React.Component<CarHomeProps, CarHomeState>{
     return (
       <div className='container-wrapper'>
         {!isFetchingCars && !isFetchingManufacturers && !isFetchingColors ? <div className='container'>
-          {colors && manufacturers && colors.length > 0 && manufacturers.length > 0 ? <CarFiltersArea
-            colors={colors}
-            manufacturers={this.formatDropdownData(manufacturers)}
-            getColorsFilterParams={this.getColorsFilterParams}
-            getFilteredCarList={this.getFilteredCarList}
-            getManufacturersFilterParams={this.getManufacturersFilterParams}
-          /> : <div />}
+          {colors && manufacturers && colors.length > 0 && manufacturers.length > 0 ?
+            <Suspense fallback={<div />}>
+              <CarFiltersArea
+                colors={colors}
+                manufacturers={this.formatDropdownData(manufacturers)}
+                getColorsFilterParams={this.getColorsFilterParams}
+                getFilteredCarList={this.getFilteredCarList}
+                getManufacturersFilterParams={this.getManufacturersFilterParams}
+              />
+            </Suspense>
+            : <div />}
 
-          {cars && cars.length > 0 ? <AvailableCarsArea
-            cars={cars}
-            totalPageCount={totalPageCount}
-            getSortFilterParams={this.getSortFilterParams}
-            getPageParams={this.getPageParams}
-            currentPage={currentPage}
-            changePageNumber={this.props.carsActions.changePageNumber}
-            totalCarCount={totalCarCount}
-          /> : <div />}
-
-        </div> : <div><h1>Loading</h1></div>}
+          {cars && cars.length > 0 ?
+            <Suspense fallback={<Loading />}>
+              <AvailableCarsArea
+                cars={cars}
+                totalPageCount={totalPageCount}
+                getSortFilterParams={this.getSortFilterParams}
+                getPageParams={this.getPageParams}
+                currentPage={currentPage}
+                changePageNumber={this.props.carsActions.changePageNumber}
+                totalCarCount={totalCarCount}
+              />
+            </Suspense>
+            :
+            <Suspense fallback={<div />}><Loading /></Suspense>}
+        </div> : <div />}
       </div>
     )
   }

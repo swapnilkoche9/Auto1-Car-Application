@@ -3,14 +3,14 @@ import {
   FETCH_ALL_MANUFACTURERS_SUCCEEDED,
   FETCH_ALL_MANUFACTURERS_FAILED
 } from '../constants'
-import {GenericAction} from '../utils/interface'
+import { GenericAction } from '../utils/interface'
 const initialState = {
   isFetchingManufacturers: false,
   manufacturers: [],
   fetchingManufacturersError: null
 }
 
-function manufacturers (state = initialState, action:GenericAction) {
+function manufacturers(state = initialState, action: GenericAction) {
   switch (action.type) {
     case FETCH_ALL_MANUFACTURERS_REQUESTED:
       return Object.assign({}, state, {

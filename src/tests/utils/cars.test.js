@@ -2,8 +2,8 @@ import {
   getCarsApi,
   getSingleCarApi
 } from '../../utils/cars'
-const respons={
-  modelName:'car'
+const respons = {
+  modelName: 'car'
 }
 describe('Cars API', function () {
   beforeEach(function () {

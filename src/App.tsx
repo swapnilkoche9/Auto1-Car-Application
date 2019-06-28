@@ -2,12 +2,18 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import CarHome from './container/CarHome'
-import CarDetails from './container/CarDetails'
-import PageNotFound from './components/PageNotFound'
 import './styles/styles.scss'
-import './assets/logo.png'
+import asyncComponent from './hoc/AsyncComponent';
 
+const CarHome = asyncComponent(() => {
+  return import('./container/CarHome');
+})
+const CarDetails = asyncComponent(() => {
+  return import('./container/CarDetails');
+})
+const PageNotFound = asyncComponent(() => {
+  return import('./components/PageNotFound');
+})
 class App extends Component {
   render () {
     return (
