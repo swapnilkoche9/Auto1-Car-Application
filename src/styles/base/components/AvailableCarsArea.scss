@@ -96,13 +96,15 @@
 
   }
   .availableCar{
-    width: max-content;
     flex-direction: column;
     height: 25rem;
-    margin-left: 30px;
+    margin-left: 10px;
   }
   .carImageContainer{
     width: unset;
     margin: unset;
+  }
+  .availableCarsContainer{
+    width: unset;
   }
 }
