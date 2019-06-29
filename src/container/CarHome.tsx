@@ -11,6 +11,8 @@ import { Suspense, lazy } from 'react';
 const AvailableCarsArea = lazy(() => import('../components/AvailableCarsArea'));
 const CarFiltersArea = lazy(() => import('../components/CarFiltersArea'));
 const Loading = lazy(() => import('../components/Loading'));
+let selectedColorValue: string = ''
+let selectedManufacturerValue: string = ''
 
 class CarHome extends React.Component<CarHomeProps, CarHomeState>{
   constructor(props: CarHomeProps) {
@@ -47,13 +49,11 @@ class CarHome extends React.Component<CarHomeProps, CarHomeState>{
   }
 
   getColorsFilterParams = (color: FilterObject) => {
-    this.setState({ selectedColor: color.value })
+    selectedColorValue = color.value
   }
 
   getManufacturersFilterParams = (manufacturer: FilterObject) => {
-    this.setState({
-      selectedManufacturer: manufacturer.value
-    })
+    selectedManufacturerValue = manufacturer.value
   }
 
   formatDropdownData = (manufacturer: any) => {
@@ -62,6 +62,12 @@ class CarHome extends React.Component<CarHomeProps, CarHomeState>{
       formattedData = manufacturer.map((member: any) => member.name)
     }
     return formattedData
+  }
+
+  filterOnColorAndManufacturer = () => {
+    this.setState({ selectedColor: selectedColorValue, selectedManufacturer: selectedManufacturerValue }, () => {
+      this.getFilteredCarList()
+    })
   }
 
   getFilteredCarList = () => {
@@ -114,7 +120,7 @@ class CarHome extends React.Component<CarHomeProps, CarHomeState>{
                 colors={colors}
                 manufacturers={this.formatDropdownData(manufacturers)}
                 getColorsFilterParams={this.getColorsFilterParams}
-                getFilteredCarList={this.getFilteredCarList}
+                getFilteredCarList={this.filterOnColorAndManufacturer}
                 getManufacturersFilterParams={this.getManufacturersFilterParams}
               />
             </Suspense>
