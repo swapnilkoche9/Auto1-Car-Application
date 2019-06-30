@@ -39,7 +39,7 @@ class CarHome extends React.Component<CarHomeProps, CarHomeState>{
 
   getSortFilterParams = (sortOrder: FilterObject) => {
 
-    this.setState({ selectedSortOrder: sortOrder.value }, () => {
+    this.setState({ selectedSortOrder: sortOrder !== null ? sortOrder.value : '' }, () => {
       this.getFilteredCarList()
     })
   }
@@ -49,11 +49,11 @@ class CarHome extends React.Component<CarHomeProps, CarHomeState>{
   }
 
   getColorsFilterParams = (color: FilterObject) => {
-    selectedColorValue = color.value
+    selectedColorValue = color !== null ? color.value : ''
   }
 
   getManufacturersFilterParams = (manufacturer: FilterObject) => {
-    selectedManufacturerValue = manufacturer.value
+    selectedManufacturerValue = manufacturer !== null ? manufacturer.value : ''
   }
 
   formatDropdownData = (manufacturer: any) => {

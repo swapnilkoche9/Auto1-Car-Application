@@ -30,7 +30,7 @@ const Dropdown = (props: DropDownProps) => {
     <div className="dropDownContainer">
       <label className="dropDownLabel">{dropDownLabel}</label>
       <div className="dropDown">
-        <Select styles={dropDownStyles} options={dropdownContent.map((option: any) => ({ label: option, value: option }))} isSearchable={true} onChange={getFilterParams} placeholder={defaultDropdownValue} />
+        <Select styles={dropDownStyles} options={dropdownContent.map((option: any) => ({ label: option, value: option }))} isSearchable={true} isClearable={true} onChange={getFilterParams} placeholder={defaultDropdownValue} defaultValue={defaultDropdownValue} />
       </div>
     </div>
   )
