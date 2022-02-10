@@ -78,7 +78,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.4",
     "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react-content-loader": "^4.2.1",
     "react-placeholder": "^3.0.2",
     "react-select": "^3.0.4",
